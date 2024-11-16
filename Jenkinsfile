@@ -1,31 +1,31 @@
-@Library('Shared')_
+@Library('Shared-lib')_
 
 pipeline{
     agent {label 'dev-server'}
 
     stages{
-        stage("Code"){
+        stage("Code Clone"){
             steps{
-                clone("https://github.com/Amitabh-DevOps/banking-app-project.git","dev")
-                echo "Code clonning done."
+                clone("https://github.com/vaghelajash/Springboot-BankApp.git","Devops")
+                echo "Code clone ho gyaaaaaa!!!!"
             }
         }
         stage("Build"){                                                             
             steps{
-                dockerbuild("bankapp-mini","latest")
-                echo "Code build bhi hogaya."
+                dockerbuild("SpringBoot Bankapp","latest")
+                echo "Code build ho gyaaaaaaa!!!"
             }
         }
         stage("Push to DockerHub"){
             steps{
-                dockerpush("dockerHub","bankapp-mini","latest")
-                echo "Push to dockerHub is also done."
+                dockerpush("dockerHub","SpringBoot Bankapp","latest")
+                echo "Push to dockerHub ho gyaaaaa!!!"
             }
         }
-        stage("Deplying"){
+        stage("Deployment"){
             steps{
                 deploy()
-                echo "Deployment bhi done."
+                echo "yahhhh Deployment ho gyaaaaa!!!!"
             }
         }
     }
